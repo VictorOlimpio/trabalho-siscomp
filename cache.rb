@@ -13,6 +13,11 @@ class Cache
   def write(data)
     substitution.select # método que vai escolher qual será o bloco substituido, atentar para os modos que necessitam.
     # Resolver o problema de não executar a política de substituição se o mapeamento for direto
+    # fazer chamadas dos tipos de substituição dentro dos mapeamentos resolveria não?
     mem[mapping.select(data, length)] = data
+  end
+
+  def read
+    
   end
 end
