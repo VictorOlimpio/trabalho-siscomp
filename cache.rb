@@ -22,7 +22,6 @@ class Cache
     # talvez chamar algum método de mapping para leitura, partindo do
     # princípio de que cada mapeamento tem uma forma diferente de enxergar
     # a cache?
-    @mem = File.readlines(file_name)
     # verificar se essa lógica faz sentido pra essa implementação, acho q falta alguma coisa, 
     # acho q poderia ter um método para verificar se o bloco está presente na cache implementado dentro de um mapeamento
     if @mem.include?(block)
