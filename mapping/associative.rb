@@ -16,7 +16,7 @@ module Mapping
       return @hits += 1 if @mem.include?(block)
       @misses += 1
       subst = @subst.select(@aux)
-      @aux[subst] = 1
+      @subst.update(aux, subst, 0)
       @mem[subst] = block
     end
   end

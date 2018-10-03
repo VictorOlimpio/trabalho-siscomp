@@ -22,7 +22,7 @@ module Algorithm
     end
 
     def self.update(aux, subst, init=nil, offset=nil)
-      aux[init+subst]=+1
+      aux[init+subst] = 1
     end
   end
 end
