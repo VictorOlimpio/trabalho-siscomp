@@ -27,13 +27,13 @@ module Mapping
       puts "Tem o bloco lá?" + (@mem[init..offset]).include?(block).to_s
        if (@mem[init..offset]).include?(block)
           pos = @mem[init..offset].find_index(block)
-         return cache_hit(aux,@subst,init,pos,final)
+         return cache_hit(aux,@subst,init,pos,offset)
        end
       # return @hits += 1 if (@mem[init..offset]).include?(block)
       @misses += 1
       conjunto= @subst.select(@aux[init..offset])
       puts "Posição escolhida para ser guardado: linha #{line} conjunto #{conjunto}"
-      @mem[line*set_lenght+subst]=block
+      @mem[line*set_lenght+conjunto]=block
       @subst.update(@aux, conjunto, init, offset)
       puts "Axiliar após a atualização"
       puts @aux
