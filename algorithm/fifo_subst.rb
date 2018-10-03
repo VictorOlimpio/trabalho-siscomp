@@ -10,10 +10,13 @@ module Algorithm
       return aux.min
     end
 
-    def self.update(aux,subst, init, offset)
+    def self.update(aux, subst, init, offset)
       maior = aux[init..offset].max
       puts "maior escolhido para atualizar #{maior}"
       aux[init+subst]=maior+1
+    end
+
+    def self.cache_hit(aux, init, pos)
     end
   end
 end
