@@ -16,5 +16,8 @@ module Algorithm
     def self.update(aux, subst, init=nil, offset=nil)
       aux[init+subst] = 1
     end
+
+    def self.cache_hit(aux, init, pos)
+    end
   end
 end

@@ -25,17 +25,26 @@ module Mapping
       b= @mem[init..offset]
       puts b
       puts "Tem o bloco lá?" + (@mem[init..offset]).include?(block).to_s
-      return @hits += 1 if (@mem[init..offset]).include?(block)
+       if (@mem[init..offset]).include?(block)
+          pos = @mem[init..offset].find_index(block)
+         return cache_hit(aux,@subst,init,pos)
+       end
+      # return @hits += 1 if (@mem[init..offset]).include?(block)
       @misses += 1
       subst= @subst.select(@aux[init..offset])
       puts "Posição escolhida para ser guardado: linha #{line} conjunto #{subst}"
-      @mem[line*set_lenght+ subst]=block
-      @subst.update(@aux,subst,init,offset)
+      @mem[line*set_lenght+subst]=block
+      @subst.update(@aux, subst, init, offset)
       puts "Axiliar após a atualização"
       puts @aux
     end
 
+    # Existem políticas de substiuição que devem ser atualizadas em caso de cache hit
+      def cache_hit(aux, subst, init, pos)
+        @hits = hits+1
+        subst.cache_hit(aux, init, pos)
 
+      end
     # método responsável por decodificar a linha em que se encontra o bloco
     # Dado um número de bloco e o tamanho de conjuntos por linha ele retorna a linha que se encontra aquele bloco
     # "Mapeamento Direto"
