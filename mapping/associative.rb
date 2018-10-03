@@ -20,7 +20,7 @@ module Mapping
       # return @hits += 1 if @mem.include?(block)
       @misses += 1
       subst = @subst.select(@aux)
-      @subst.update(aux, subst, 0,0)
+      @subst.update(aux, subst, 0,@mem.size-1)
       @mem[subst] = block
     end
 
