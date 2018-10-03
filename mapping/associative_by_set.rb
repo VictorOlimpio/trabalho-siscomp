@@ -9,7 +9,7 @@ module Mapping
       @lenght = lenght
       @mem = []
       @aux = []
-      (0..lenght).each {|x| @mem[x] = -1; @aux[x] = -1}
+      (0..lenght-1).each {|x| @mem[x] = -1; @aux[x] = -1}
       @set_lenght = set_lenght
       puts "Qtd linhas cache #{lenght/set_lenght}"
     end
