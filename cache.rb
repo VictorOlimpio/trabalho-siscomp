@@ -32,7 +32,5 @@ class Cache
     @miss += 1
   end
 
-  def miss_rate
-    return (@miss / length) * 100
-  end
+  
 end
