@@ -30,7 +30,9 @@ module Mapping
       subst= @subst.select(@aux[init..offset])
       puts "Posição escolhida para ser guardado: linha #{line} conjunto #{subst}"
       @mem[line*set_lenght+ subst]=block
-      aux[line*set_lenght+ subst] +=1
+      @subst.update(@aux,subst,init,offset)
+      puts "Axiliar após a atualização"
+      puts @aux
     end
 
 
