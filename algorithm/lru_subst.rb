@@ -16,12 +16,27 @@ module Algorithm
       puts 'Primeira posição vazia ' + i.to_s
       return i unless i == nil
 
-
-
+      puts "Dentre estas opções #{aux} o fundo da pilha é #{aux.min}"
+      return aux.min
     end
 
-    def self.update(aux, subst, init, offset)
+    def self.update(aux, conjunto, init, offset)
+      maior = aux[init..offset].max
+      puts "Maior valor escolhido para atualizar #{maior}"
+      posicao_maior = aux[init..offset].find_index(maior)
+      puts "e sua posição no array é #{posicao_maior}"
+      aux[init+conjunto]=maior+1
+      # Depois que o que foi recém adicionado se tornou o topo da 'fila' isto é o de maior valor
+      # decremento a fila inteira exceto se a posição estiver vazia
+      (init..offset).each{|x| aux[x]=aux[x]-1 unless aux[x]==-1}
+    end
 
+    def self.cache_hit(aux, init, pos, final)
+      # Nos cache hits é necessário tonar a posição que deu hit o topo da pilha e depois decrementar
+      # tod0 mundo de 1
+      maior = aux[init..final].max
+      aux[init+pos]=maior+1
+      (init..final).each{|x| aux[x]=aux[x]-1 unless aux[x]==-1}
     end
   end
 end

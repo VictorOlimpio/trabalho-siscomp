@@ -15,7 +15,7 @@ module Mapping
     def read(block)
       if @mem.include?(block)
         pos = @mem.find_index(block)
-        return cache_hit(aux,@subst,0,pos)
+        return cache_hit(aux,@subst,0,pos,0)
       end
       # return @hits += 1 if @mem.include?(block)
       @misses += 1
@@ -25,9 +25,9 @@ module Mapping
     end
 
     # Existem políticas de substiuição que devem ser atualizadas em caso de cache hit
-    def cache_hit(aux, subst, init, pos)
+    def cache_hit(aux, subst, init, pos,final)
       @hits = hits+1
-      subst.cache_hit(aux, init, pos)
+      subst.cache_hit(aux, init, pos,final)
     end
   end
 end

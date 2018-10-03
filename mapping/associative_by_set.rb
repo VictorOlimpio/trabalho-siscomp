@@ -27,23 +27,22 @@ module Mapping
       puts "Tem o bloco lá?" + (@mem[init..offset]).include?(block).to_s
        if (@mem[init..offset]).include?(block)
           pos = @mem[init..offset].find_index(block)
-         return cache_hit(aux,@subst,init,pos)
+         return cache_hit(aux,@subst,init,pos,final)
        end
       # return @hits += 1 if (@mem[init..offset]).include?(block)
       @misses += 1
-      subst= @subst.select(@aux[init..offset])
-      puts "Posição escolhida para ser guardado: linha #{line} conjunto #{subst}"
+      conjunto= @subst.select(@aux[init..offset])
+      puts "Posição escolhida para ser guardado: linha #{line} conjunto #{conjunto}"
       @mem[line*set_lenght+subst]=block
-      @subst.update(@aux, subst, init, offset)
+      @subst.update(@aux, conjunto, init, offset)
       puts "Axiliar após a atualização"
       puts @aux
     end
 
     # Existem políticas de substiuição que devem ser atualizadas em caso de cache hit
-      def cache_hit(aux, subst, init, pos)
+      def cache_hit(aux, subst, init, pos, final)
         @hits = hits+1
-        subst.cache_hit(aux, init, pos)
-
+        subst.cache_hit(aux, init, pos, final)
       end
     # método responsável por decodificar a linha em que se encontra o bloco
     # Dado um número de bloco e o tamanho de conjuntos por linha ele retorna a linha que se encontra aquele bloco

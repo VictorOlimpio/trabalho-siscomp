@@ -3,7 +3,6 @@ class Ram
   # arquivo para uma lista, e depois só precisaria lidar com essa lista q pode
   # ser a variável mem mesmo
   
-  atea:mem
 
   # Como o trabalho não é sobre política de escrita na RAM, e como vamos utilizar este método apenas para carregar
   # o arquivo inicial pra RAM, acho q pode ser simples como está

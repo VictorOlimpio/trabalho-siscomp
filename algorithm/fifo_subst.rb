@@ -16,7 +16,8 @@ module Algorithm
       aux[init+subst]=maior+1
     end
 
-    def self.cache_hit(aux, init, pos)
+    def self.cache_hit(aux, init, pos,final)
+      # Não faz nada
     end
   end
 end
