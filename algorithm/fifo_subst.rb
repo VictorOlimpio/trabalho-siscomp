@@ -1,13 +1,5 @@
 module Algorithm
   class FifoSubst
-    # attr_accessor :mem, :aux
-
-=begin
-    def initialize(mem)
-      @mem = mem
-      @aux = aux
-    end
-=end
 
     def self.select(aux)
       puts 'aux recebido dentro do select =$ ' + aux.to_s

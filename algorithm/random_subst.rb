@@ -1,22 +1,14 @@
 module Algorithm
   class RandomSubst
-    # attr_accessor :mem, :aux
 
-=begin
-    def initialize(mem)
-      @mem = mem
-      @aux = aux
-    end
-=end
-
-    def self.select(mem)
-      puts 'mem =$ ' + mem.to_s
-      i = mem.find_index(-1) # Escolhe o primeiro lugar vazio
+    def self.select(aux)
+      puts 'aux =$ ' + aux.to_s
+      i = aux.find_index(-1) # Escolhe o primeiro lugar vazio
       puts 'Primeira posição vazia ' + i.to_s
       return i unless i == nil
       r = Random.new
-      puts 'mem.size ' + mem.size.to_s
-      ale = r.rand(0..mem.size) # Retorna um aleatório entre todos os possíveis
+      puts 'aux.size ' + aux.size.to_s
+      ale = r.rand(0..aux.size) # Retorna um aleatório entre todos os possíveis
       puts 'escolhido aleatorio' + ale.to_s
       return ale
     end
